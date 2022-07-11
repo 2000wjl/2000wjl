@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="ZYHWJL的个人基于Hexo Blog">
+    <meta name="author" content="ZYHWJL">
+    
+    <title>
+        
+            MySql学习-05排序与非分页-尚硅谷 |
+        
+        ZYHWJL の BLOG
+    </title>
+    <script src="https://upyun.zyhwjl.cn/jscss/aidaori.js" type="text/javascript" charset="utf-8"></script>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"blog.zyhwjl.cn","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg","favicon":"https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"只要有你想要保护的东西，那就拔剑好了。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                ZYHWJL の BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="page-template-container">
+        
+        
+        <div class="page-template-content markdown-body">
+            
+                <blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iq4y1u7vj" >【宋红康】MySQL数据库（安装&#x2F;基础&#x2F;高级&#x2F;优化）_哔哩哔哩_bilibili<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h1 id="排序数据"><a href="#排序数据" class="headerlink" title="排序数据"></a>排序数据</h1><h2 id="排序规则"><a href="#排序规则" class="headerlink" title="排序规则"></a>排序规则</h2><ul>
+<li>使用 ORDER BY 子句排序<ul>
+<li><strong>ASC（ascend）: 升序</strong></li>
+<li><strong>DESC（descend）:降序</strong></li>
+</ul>
+</li>
+<li><strong>ORDER BY 子句在SELECT语句的结尾。</strong></li>
+</ul>
+<h2 id="单列排序"><a href="#单列排序" class="headerlink" title="单列排序"></a>单列排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT   last_name, job_id, department_id, hire_date</span><br><span class="line">FROM     employees</span><br><span class="line">ORDER BY hire_date ;</span><br></pre></td></tr></table></figure>
+
+<p> <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/19/14-16-24-ce13c9fba931aee19065246c9be067a5-1554974255957-453e8f.png"
+                      alt="1554974255957"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\zyhwj\OneDrive\Study\Java\尚硅谷\MySql\课件md版\01_课件\images\1554974260133.png"
+                      alt="1554974260133"
+                ></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT   last_name, job_id, department_id, hire_date</span><br><span class="line">FROM     employees</span><br><span class="line">ORDER BY hire_date DESC ;</span><br></pre></td></tr></table></figure>
+
+<p> <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/19/14-16-11-e9c9c7d604798bfd7431f6fa41a96f88-image-20211219141611079-93d02e.png"
+                      alt="image-20211219141611079"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\zyhwj\OneDrive\Study\Java\尚硅谷\MySql\课件md版\01_课件\images\1554974827522.png"
+                      alt="1554974827522"
+                ></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT employee_id, last_name, salary*12 annsal</span><br><span class="line">FROM   employees</span><br><span class="line">ORDER BY annsal;</span><br></pre></td></tr></table></figure>
+
+<p> <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\zyhwj\OneDrive\Study\Java\尚硅谷\MySql\课件md版\01_课件\images\1554974853194.png"
+                      alt="1554974853194"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/19/14-15-05-5ad319e0518419703e7d1e0ff0724891-1554974858252-7bbb33.png"
+                      alt="1554974858252"
+                ></p>
+<h2 id="多列排序"><a href="#多列排序" class="headerlink" title="多列排序"></a>多列排序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT last_name, department_id, salary</span><br><span class="line">FROM   employees</span><br><span class="line">ORDER BY department_id, salary DESC;</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/19/14-15-06-49618e23c9dca41724c6fe171e1c3057-1554974901572-8bc401.png"
+                      alt="1554974901572"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="C:\Users\zyhwj\OneDrive\Study\Java\尚硅谷\MySql\课件md版\01_课件\images\1554974907498.png"
+                      alt="1554974907498"
+                ></p>
+<ul>
+<li>可以使用不在SELECT列表中的列排序。</li>
+<li>在对多列进行排序的时候，首先排序的第一列必须有相同的列值，才会对第二列进行排序。如果第一列数据中所有值都是唯一的，将不再对第二列进行排序。</li>
+</ul>
+<h1 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>背景1：查询返回的记录太多了，查看起来很不方便，怎么样能够实现分页查询呢？</p>
+<p>背景2：表里有 4 条数据，我们只想要显示第 2、3 条数据怎么办呢？</p>
+<h2 id="实现规则"><a href="#实现规则" class="headerlink" title="实现规则"></a>实现规则</h2><ul>
+<li><p>分页原理</p>
+<p>所谓分页显示，就是将数据库中的结果集，一段一段显示出来需要的条件。</p>
+</li>
+<li><p><strong>MySQL中使用 LIMIT 实现分页</strong></p>
+</li>
+<li><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIMIT [位置偏移量,] 行数</span><br></pre></td></tr></table></figure>
+
+<p>第一个“位置偏移量”参数指示MySQL从哪一行开始显示，是一个可选参数，如果不指定“位置偏移量”，将会从表中的第一条记录开始（第一条记录的位置偏移量是0，第二条记录的位置偏移量是1，以此类推）；第二个参数“行数”指示返回的记录条数。</p>
+</li>
+<li><p>举例</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--前10条记录：</span><br><span class="line">SELECT * FROM 表名 LIMIT 0,10;</span><br><span class="line">或者</span><br><span class="line">SELECT * FROM 表名 LIMIT 10;</span><br><span class="line"></span><br><span class="line">--第11至20条记录：</span><br><span class="line">SELECT * FROM 表名 LIMIT 10,10;</span><br><span class="line"></span><br><span class="line">--第21至30条记录： </span><br><span class="line">SELECT * FROM 表名 LIMIT 20,10;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>MySQL 8.0中可以使用“LIMIT 3 OFFSET 4”，意思是获取从第5条记录开始后面的3条记录，和“LIMIT 4,3;”返回的结果相同。</p>
+</blockquote>
+<ul>
+<li>分页显式公式<strong>：（当前页数-1）*每页条数，每页条数</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM table </span><br><span class="line">LIMIT(PageNo - 1)*PageSize,PageSize;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>注意：LIMIT 子句必须放在整个SELECT语句的最后！</strong></li>
+<li>使用 LIMIT 的好处</li>
+</ul>
+<p>约束返回结果的数量可以<code>减少数据表的网络传输量</code>，也可以<code>提升查询效率</code>。如果我们知道返回结果只有 1 条，就可以使用<code>LIMIT 1</code>，告诉 SELECT 语句只需要返回一条记录即可。这样的好处就是 SELECT 不需要扫描完整的表，只需要检索到一条符合条件的记录即可返回。</p>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><p>在不同的 DBMS 中使用的关键字可能不同。在 MySQL、PostgreSQL、MariaDB 和 SQLite 中使用 LIMIT 关键字，而且需要放到 SELECT 语句的最后面。</p>
+<ul>
+<li>如果是 SQL Server 和 Access，需要使用 <code>TOP</code> 关键字，比如：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT TOP 5 name, hp_max FROM heros ORDER BY hp_max DESC</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果是 DB2，使用<code>FETCH FIRST 5 ROWS ONLY</code>这样的关键字：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT name, hp_max FROM heros ORDER BY hp_max DESC FETCH FIRST 5 ROWS ONLY</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果是 Oracle，你需要基于 <code>ROWNUM</code> 来统计行数：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT rownum,last_name,salary FROM employees WHERE rownum &lt; 5 ORDER BY salary DESC;</span><br></pre></td></tr></table></figure>
+
+<p>需要说明的是，这条语句是先取出来前 5 条数据行，然后再按照 hp_max 从高到低的顺序进行排序。但这样产生的结果和上述方法的并不一样。我会在后面讲到子查询，你可以使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT rownum, last_name,salary</span><br><span class="line">FROM (</span><br><span class="line">    SELECT last_name,salary</span><br><span class="line">    FROM employees</span><br><span class="line">    ORDER BY salary DESC)</span><br><span class="line">WHERE rownum &lt; 10;</span><br></pre></td></tr></table></figure>
+
+<p>得到与上述方法一致的结果。</p>
+
+            
+        </div>
+        <div class="page-template-comments">
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">ZYHWJL</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+		<div>
+			<span>站点已萌萌哒运行</span>
+			<span id="runtime_span1" style="color:pink"></span>
+			<span>天</span>
+			<span id="runtime_span2" style="color:pink"></span>
+			<span>时</span>
+			<span id="runtime_span3" style="color:pink"></span>
+			<span>分</span>
+			<span id="runtime_span4" style="color:pink"></span>
+			<span>秒</span>
+			 <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new Date("09/8/2020 00:00:00");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span1.innerHTML=A;runtime_span2.innerHTML=B;runtime_span3.innerHTML=C;runtime_span4.innerHTML=D}show_runtime();</script>
+		</div>
+		
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn">豫ICP备18042574号</a></div>
+        
+        
+    </div>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?1d63cd421d559da9a90e9b5fc6fc6178";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</footer>
+
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

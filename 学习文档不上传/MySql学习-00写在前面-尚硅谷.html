@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="ZYHWJL的个人基于Hexo Blog">
+    <meta name="author" content="ZYHWJL">
+    
+    <title>
+        
+            MySql学习-00写在前面-尚硅谷 |
+        
+        ZYHWJL の BLOG
+    </title>
+    <script src="https://upyun.zyhwjl.cn/jscss/aidaori.js" type="text/javascript" charset="utf-8"></script>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"blog.zyhwjl.cn","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg","favicon":"https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"只要有你想要保护的东西，那就拔剑好了。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                ZYHWJL の BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="page-template-container">
+        
+        
+        <div class="page-template-content markdown-body">
+            
+                <blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iq4y1u7vj" >【宋红康】MySQL数据库（安装&#x2F;基础&#x2F;高级&#x2F;优化）_哔哩哔哩_bilibili<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h1 id="MySQL数据库基础篇大纲"><a href="#MySQL数据库基础篇大纲" class="headerlink" title="MySQL数据库基础篇大纲"></a>MySQL数据库基础篇大纲</h1><p><strong>MySQL数据库基础篇分为5个篇章：</strong></p>
+<h2 id="数据库概述与MySQL安装篇"><a href="#数据库概述与MySQL安装篇" class="headerlink" title="数据库概述与MySQL安装篇"></a><strong>数据库概述与MySQL安装篇</strong></h2><ul>
+<li>第01章：数据库概述</li>
+<li>第02章：MySQL环境搭建</li>
+</ul>
+<h2 id="SQL之SELECT使用篇"><a href="#SQL之SELECT使用篇" class="headerlink" title="SQL之SELECT使用篇"></a><strong>SQL之SELECT使用篇</strong></h2><ul>
+<li>第03章：基本的SELECT语句</li>
+<li>第04章：运算符</li>
+<li>第05章：排序与分页</li>
+<li>第06章：多表查询</li>
+<li>第07章：单行函数</li>
+<li>第08章：聚合函数</li>
+<li>第09章：子查询</li>
+</ul>
+<h2 id="SQL之DDL、DML、DCL使用篇"><a href="#SQL之DDL、DML、DCL使用篇" class="headerlink" title="SQL之DDL、DML、DCL使用篇"></a><strong>SQL之DDL、DML、DCL使用篇</strong></h2><ul>
+<li>第10章：创建和管理表</li>
+<li>第11章：数据处理之增删改</li>
+<li>第12章：MySQL数据类型精讲</li>
+<li>第13章：约束</li>
+</ul>
+<h2 id="其它数据库对象篇"><a href="#其它数据库对象篇" class="headerlink" title="其它数据库对象篇"></a><strong>其它数据库对象篇</strong></h2><ul>
+<li>第14章：视图</li>
+<li>第15章：存储过程与函数</li>
+<li>第16章：变量、流程控制与游标</li>
+<li>第17章：触发器</li>
+</ul>
+<h2 id="MySQL8-新特性篇"><a href="#MySQL8-新特性篇" class="headerlink" title="MySQL8 新特性篇"></a><strong>MySQL8 新特性篇</strong></h2><ul>
+<li>第18章：MySQL8其它新特性</li>
+</ul>
+<h1 id="MySQL高级特性篇大纲"><a href="#MySQL高级特性篇大纲" class="headerlink" title="MySQL高级特性篇大纲"></a>MySQL高级特性篇大纲</h1><p><strong>MySQL高级特性分为4个篇章：</strong></p>
+<h2 id="MySQL架构篇"><a href="#MySQL架构篇" class="headerlink" title="MySQL架构篇"></a><strong>MySQL架构篇</strong></h2><ul>
+<li>第01章：Linux下MySQL的安装与使用</li>
+<li>第02章：MySQL的数据目录</li>
+<li>第03章：用户与权限管理</li>
+<li>第04章：逻辑架构</li>
+<li>第05章：存储引擎</li>
+<li>第06章：InnoDB数据页结构</li>
+</ul>
+<h2 id="索引及调优篇"><a href="#索引及调优篇" class="headerlink" title="索引及调优篇"></a><strong>索引及调优篇</strong></h2><ul>
+<li>第07章：索引</li>
+<li>第08章：性能分析工具的使用</li>
+<li>第09章：索引优化与SQL优化</li>
+<li>第10章：数据库的设计规范</li>
+<li>第11章：数据库其他调优策略</li>
+</ul>
+<h2 id="事务篇"><a href="#事务篇" class="headerlink" title="事务篇"></a><strong>事务篇</strong></h2><ul>
+<li>第12章：事务基础知识</li>
+<li>第13章：MySQL事务日志</li>
+<li>第14章：锁</li>
+<li>第15章：多版本并发控制(MVCC)</li>
+</ul>
+<h2 id="日志与备份篇"><a href="#日志与备份篇" class="headerlink" title="日志与备份篇"></a><strong>日志与备份篇</strong></h2><ul>
+<li>第16章：其它数据库日志</li>
+<li>第17章：主从复制</li>
+<li>第18章：数据库备份与恢复</li>
+</ul>
+<h1 id="MySQL高手是怎样炼成的"><a href="#MySQL高手是怎样炼成的" class="headerlink" title="MySQL高手是怎样炼成的"></a>MySQL高手是怎样炼成的</h1><blockquote>
+<p>针对开发工程师、DBA、运维</p>
+</blockquote>
+<ul>
+<li>mysql服务器的安装配置</li>
+<li>SQL编程(自定义函数、存储过程、触发器、定时任务)</li>
+<li>数据库索引建立</li>
+<li>SQL语句优化</li>
+<li>数据库内部结构和原理</li>
+<li>数据库的性能监控分析与系统优化</li>
+<li>各种参数常量设定</li>
+<li>数据库建模优化</li>
+<li>主从复制</li>
+<li>分布式架构搭建、垂直切割和水平切割</li>
+<li>MyCat</li>
+<li>数据迁移</li>
+<li>容灾备份和恢复</li>
+<li>对开源数据库进行二次开发</li>
+</ul>
+<blockquote>
+<p><strong>数据库就像一棵常青的技能树</strong>，不管是普通开发还是首席架构、CTO 都能够从中汲取足够的技术养料。</p>
+<p><strong>普通开发</strong>往往积累单点技术、比如 CRUD、锁类型、索引的数据结构…而对于<strong>技术骨干、架构师</strong>则往往需要对底层原理吃透，数据库事务 ACID 是如何实现的？何时命中索引、何时不能，为什么？分布式场景下数据库怎么优化才能保持高性能？</p>
+<p>说白了，知道怎么用是一方面，知道为什么则是更为<strong>稀缺的能力</strong>。</p>
+</blockquote>
+<p>很多技术专家在总结程序员核心能力的时候都会提到至关重要的一点：<strong>精通数据库。精通意味着：</strong></p>
+<blockquote>
+<p>第一形成知识网，更灵活地应对突发问题；</p>
+<p>第二底层原理要懂，懂了才能更自由地应对复杂多变的业务场景。</p>
+</blockquote>
+<h1 id="本套课程适合人群"><a href="#本套课程适合人群" class="headerlink" title="本套课程适合人群"></a>本套课程适合人群</h1><p>1、MySQL数据库初学者。建议按照顺序从套课程的“基础篇”开始学习。</p>
+<p>2、从事后台开发(Java、Python、GO、PHP等)、MySQL开发 1~3 年的开发人员和运维人员。建议选择“基础篇”部分内容学习，或者跳过“基础篇”，直接从“高级特性篇”开始学习。</p>
+<p>3、有资历的MySQL DBA。本课程可以作为“案头书”。在解决问题时，如果记不清某些概念或者细节比较模糊，则可以拿来参考。</p>
+<h1 id="希望你能获取的"><a href="#希望你能获取的" class="headerlink" title="希望你能获取的"></a>希望你能获取的</h1><p>先说一个笑话。这个笑话是我从万维钢的专栏里看到的。</p>
+<p>三个逻辑学家走进酒吧，酒保问他们，三位都喝啤酒吗？<br>第一个逻辑学家说，我不知道。<br>第二个逻辑学家说，我不知道。<br>第三个逻辑学家说，是的。</p>
+<p>对于知识，是需要<code>认真</code>和<code>讲究逻辑</code>的。希望这份认真、严谨你在课程的每个细节都能体会到。希望通过这套课程的系统性训练，你也能感受到这种思维方式的美，最终也能获得这种思维方式。</p>
+<p><code>具备优秀的思维能力</code>才是在未来可以迁移的能力，如果只是学习一些命令，则很快会过时，<code>思维能力</code>和<code>学习能力</code>的提升才是不会变的东西。</p>
+
+            
+        </div>
+        <div class="page-template-comments">
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">ZYHWJL</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+		<div>
+			<span>站点已萌萌哒运行</span>
+			<span id="runtime_span1" style="color:pink"></span>
+			<span>天</span>
+			<span id="runtime_span2" style="color:pink"></span>
+			<span>时</span>
+			<span id="runtime_span3" style="color:pink"></span>
+			<span>分</span>
+			<span id="runtime_span4" style="color:pink"></span>
+			<span>秒</span>
+			 <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new Date("09/8/2020 00:00:00");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span1.innerHTML=A;runtime_span2.innerHTML=B;runtime_span3.innerHTML=C;runtime_span4.innerHTML=D}show_runtime();</script>
+		</div>
+		
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn">豫ICP备18042574号</a></div>
+        
+        
+    </div>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?1d63cd421d559da9a90e9b5fc6fc6178";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</footer>
+
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

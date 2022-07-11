@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="ZYHWJL的个人基于Hexo Blog">
+    <meta name="author" content="ZYHWJL">
+    
+    <title>
+        
+            MySql学习-01数据库概述-尚硅谷 |
+        
+        ZYHWJL の BLOG
+    </title>
+    <script src="https://upyun.zyhwjl.cn/jscss/aidaori.js" type="text/javascript" charset="utf-8"></script>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"blog.zyhwjl.cn","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg","favicon":"https://ae01.alicdn.com/kf/U062ad107ac604106bf77342c6219e2f9Z.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"只要有你想要保护的东西，那就拔剑好了。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                ZYHWJL の BLOG
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="page-template-container">
+        
+        
+        <div class="page-template-content markdown-body">
+            
+                <blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iq4y1u7vj" >【宋红康】MySQL数据库（安装&#x2F;基础&#x2F;高级&#x2F;优化）_哔哩哔哩_bilibili<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h1 id="为什么要使用数据库"><a href="#为什么要使用数据库" class="headerlink" title="为什么要使用数据库"></a>为什么要使用数据库</h1><ul>
+<li>持久化(persistence)：<strong>把数据保存到可掉电式存储设备中以供之后使用</strong>。大多数情况下，特别是企业级应用，<strong>数据持久化意味着将内存中的数据保存到硬盘上加以”固化”</strong>，而持久化的实现过程大多通过各种关系数据库来完成。</li>
+<li>持久化的主要作用是<strong>将内存中的数据存储在关系型数据库中</strong>，当然也可以存储在磁盘文件、XML数据文件中。</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-39-14-0207b1ac6ae3976e416f808320d4016d-image-20211214133914926-6bf68e.png"
+                      alt="image-20211214133914926"
+                ></p>
+<p>生活中的例子：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/14/13-38-56-49cd8d8c40a7e6540a46777dea02a784-image_20211020132711-31e202.jpg"
+                     
+                ></p>
+<h1 id="数据库与数据库管理系统"><a href="#数据库与数据库管理系统" class="headerlink" title="数据库与数据库管理系统"></a>数据库与数据库管理系统</h1><h2 id="数据库的相关概念"><a href="#数据库的相关概念" class="headerlink" title="数据库的相关概念"></a>数据库的相关概念</h2><table>
+<thead>
+<tr>
+<th><strong>DB：数据库（Database）</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>即存储数据的“仓库”，其本质是一个文件系统。它保存了一系列有组织的数据。</td>
+</tr>
+<tr>
+<td><strong>DBMS：数据库管理系统（Database Management System）</strong></td>
+</tr>
+<tr>
+<td>是一种操纵和管理数据库的大型软件，用于建立、使用和维护数据库，对数据库进行统一管理和控制。用户通过数据库管理系统访问数据库中表内的数据。</td>
+</tr>
+<tr>
+<td><strong>SQL：结构化查询语言（Structured Query Language）</strong></td>
+</tr>
+<tr>
+<td>专门用来与数据库通信的语言。</td>
+</tr>
+</tbody></table>
+<h2 id="数据库与数据库管理系统的关系"><a href="#数据库与数据库管理系统的关系" class="headerlink" title="数据库与数据库管理系统的关系"></a>数据库与数据库管理系统的关系</h2><p>数据库管理系统(DBMS)可以管理多个数据库，一般开发人员会针对每一个应用创建一个数据库。为保存应用中实体的数据，一般会在数据库创建多个表，以保存程序中实体用户的数据。 </p>
+<p>数据库管理系统、数据库和表的关系如图所示：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-38-43-12bb6d9b97e270598eab63f6637884b1-image-20211214133843778-b37b64.png"
+                      alt="image-20211214133843778"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-38-39-b640b86c794d4611c3bf1e8c34d48021-image-20211214133839739-a0da38.png"
+                      alt="image-20211214133839739"
+                ></p>
+<h2 id="常见的数据库管理系统排名-DBMS"><a href="#常见的数据库管理系统排名-DBMS" class="headerlink" title="常见的数据库管理系统排名(DBMS)"></a>常见的数据库管理系统排名(DBMS)</h2><p>目前互联网上常见的数据库管理软件有Oracle、MySQL、MS SQL Server、DB2、PostgreSQL、Access、Sybase、Informix这几种。以下是2021年<strong>DB-Engines Ranking</strong> 对各数据库受欢迎程度进行调查后的统计结果：（查看数据库最新排名:<a class="link"   target="_blank" rel="noopener" href="https://db-engines.com/en/ranking%EF%BC%89" >https://db-engines.com/en/ranking）<i class="fas fa-external-link-alt"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-38-35-af0d80d86cd3cd27e3e30d5b1763690e-image-20211214133835553-fc4b23.png"
+                      alt="image-20211214133835553"
+                ></p>
+<p>。。。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/14/13-36-47-5c7a7ea3a68d9d235a445e1a2afc41b0-image-20211013202940798-56cd56.png"
+                      alt="image-20211013202940798"
+                ></p>
+<p>对应的走势图：（<a class="link"   target="_blank" rel="noopener" href="https://db-engines.com/en/ranking_trend%EF%BC%89" >https://db-engines.com/en/ranking_trend）<i class="fas fa-external-link-alt"></i></a></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-38-29-9593d9504571aa99ec49b9b0b782fd6d-image-20211214133829652-31f33c.png"
+                      alt="image-20211214133829652"
+                ></p>
+<h2 id="常见的数据库介绍"><a href="#常见的数据库介绍" class="headerlink" title="常见的数据库介绍"></a>常见的数据库介绍</h2><p><strong>Oracle</strong></p>
+<p>1979 年，Oracle 2 诞生，它是第一个商用的 RDBMS（关系型数据库管理系统）。随着 Oracle 软件的名气越来越大，公司也改名叫 Oracle 公司。</p>
+<p>2007年，总计85亿美金收购BEA Systems。</p>
+<p>2009年，总计74亿美金收购SUN。此前的2008年，SUN以10亿美金收购MySQL。意味着Oracle 同时拥有了 MySQL 的管理权，至此 Oracle 在数据库领域中成为绝对的领导者。</p>
+<p>2013年，甲骨文超越IBM，成为继Microsoft后全球第二大软件公司。</p>
+<p>如今 Oracle 的年收入达到了 400 亿美金，足以证明商用（收费）数据库软件的价值。</p>
+<p><strong>SQL Server</strong></p>
+<p>SQL Server 是微软开发的大型商业数据库，诞生于 1989 年。C#、.net等语言常使用，与WinNT完全集成，也可以很好地与Microsoft BackOffice产品集成。</p>
+<p><strong>DB2</strong></p>
+<p>IBM公司的数据库产品,收费的。常应用在银行系统中。</p>
+<p><strong>PostgreSQL</strong></p>
+<p>PostgreSQL 的稳定性极强，最符合SQL标准，开放源码，具备商业级DBMS质量。PG对数据量大的文本以及SQL处理较快。</p>
+<p><strong>SyBase</strong></p>
+<p>已经淡出历史舞台。提供了一个非常专业数据建模的工具PowerDesigner。 </p>
+<p><strong>SQLite</strong></p>
+<p>嵌入式的小型数据库，应用在手机端。 零配置，SQlite3不用安装，不用配置，不用启动，关闭或者配置数据库实例。当系统崩溃后不用做任何恢复操作，再下次使用数据库的时候自动恢复。</p>
+<p><strong>informix</strong></p>
+<p>IBM公司出品，取自Information 和Unix的结合，它是第一个被移植到Linux上的商业数据库产品。仅运行于unix&#x2F;linux平台，命令行操作。 性能较高，支持集群，适应于安全性要求极高的系统，尤其是银行，证券系统的应用。  </p>
+<h1 id="MySQL介绍"><a href="#MySQL介绍" class="headerlink" title="MySQL介绍"></a>MySQL介绍</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/14/13-36-49-d495acd6a40018086f4dadc4070cf6f1-image-20210829230656830-7b42ab.png"
+                      alt="image-20210829230656830"
+                ></p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>MySQL是一个<code>开放源代码的关系型数据库管理系统</code>，由瑞典MySQL AB（创始人Michael Widenius）公司1995年开发，迅速成为开源数据库的 No.1。</li>
+<li>2008被<code>Sun</code>收购（10亿美金），2009年Sun被<code>Oracle</code>收购。<code>MariaDB</code>应运而生。（MySQL 的创造者担心 MySQL 有闭源的风险，因此创建了 MySQL 的分支项目 MariaDB）</li>
+<li>MySQL6.x 版本之后分为<code>社区版</code>和<code>商业版</code>。</li>
+<li>MySQL是一种关联数据库管理系统，将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。</li>
+<li>MySQL是开源的，所以你不需要支付额外的费用。</li>
+<li>MySQL是可以定制的，采用了<code>GPL（GNU General Public License）</code>协议，你可以修改源码来开发自己的MySQL系统。</li>
+<li>MySQL支持大型的数据库。可以处理拥有上千万条记录的大型数据库。</li>
+<li>MySQL支持大型数据库，支持5000万条记录的数据仓库，32位系统表文件最大可支持<code>4GB</code>，64位系统支持最大的表文件为<code>8TB</code>。</li>
+<li>MySQL使用<code>标准的SQL数据语言</code>形式。</li>
+<li>MySQL可以允许运行于多个系统上，并且支持多种语言。这些编程语言包括C、C++、Python、Java、Perl、PHP和Ruby等。</li>
+</ul>
+<h2 id="MySQL发展史重大事件"><a href="#MySQL发展史重大事件" class="headerlink" title="MySQL发展史重大事件"></a>MySQL发展史重大事件</h2><p>MySQL的历史就是整个互联网的发展史。互联网业务从社交领域、电商领域到金融领域的发展，推动着应用对数据库的需求提升，对传统的数据库服务能力提出了挑战。高并发、高性能、高可用、轻资源、易维护、易扩展的需求，促进了MySQL的长足发展。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-38-22-ae134f8d5319333e0c9e0b8b36fc626e-image-20211214133822046-42fdef.png"
+                      alt="image-20211214133822046"
+                ></p>
+<h2 id="关于MySQL-8-0"><a href="#关于MySQL-8-0" class="headerlink" title="关于MySQL 8.0"></a>关于MySQL 8.0</h2><p><code>MySQL从5.7版本直接跳跃发布了8.0版本</code>，可见这是一个令人兴奋的里程碑版本。MySQL 8版本在功能上做了显著的改进与增强，开发者对MySQL的源代码进行了重构，最突出的一点是多MySQL Optimizer优化器进行了改进。不仅在速度上得到了改善，还为用户带来了更好的性能和更棒的体验。</p>
+<h2 id="Why-choose-MySQL"><a href="#Why-choose-MySQL" class="headerlink" title="Why choose MySQL?"></a>Why choose MySQL?</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-38-16-900e0f81c0255823da130b4732404e95-image-20211214133816364-853920.png"
+                      alt="image-20211214133816364"
+                ></p>
+<p>为什么如此多的厂商要选用MySQL？大概总结的原因主要有以下几点：    </p>
+<ol>
+<li><p>开放源代码，使用成本低。</p>
+</li>
+<li><p>性能卓越，服务稳定。</p>
+</li>
+<li><p>软件体积小，使用简单，并且易于维护。</p>
+</li>
+<li><p>历史悠久，社区用户非常活跃，遇到问题可以寻求帮助。</p>
+</li>
+<li><p>许多互联网公司在用，经过了时间的验证。</p>
+</li>
+</ol>
+<h2 id="Oracle-vs-MySQL"><a href="#Oracle-vs-MySQL" class="headerlink" title="Oracle vs MySQL"></a>Oracle vs MySQL</h2><p>Oracle 更适合大型跨国企业的使用，因为他们对费用不敏感，但是对性能要求以及安全性有更高的要求。</p>
+<p>MySQL 由于其<strong>体积小、速度快、总体拥有成本低，可处理上千万条记录的大型数据库，尤其是开放源码这一特点，使得很多互联网公司、中小型网站选择了MySQL作为网站数据库</strong>（Facebook，Twitter，YouTube，阿里巴巴&#x2F;蚂蚁金服，去哪儿，美团外卖，腾讯）。</p>
+<h1 id="RDBMS-与-非RDBMS"><a href="#RDBMS-与-非RDBMS" class="headerlink" title="RDBMS 与 非RDBMS"></a>RDBMS 与 非RDBMS</h1><p>从排名中我们能看出来，关系型数据库绝对是 DBMS 的主流，其中使用最多的 DBMS 分别是 Oracle、MySQL 和 SQL Server。这些都是关系型数据库（RDBMS）。</p>
+<h2 id="关系型数据库-RDBMS"><a href="#关系型数据库-RDBMS" class="headerlink" title="关系型数据库(RDBMS)"></a>关系型数据库(RDBMS)</h2><h3 id="实质"><a href="#实质" class="headerlink" title="实质"></a>实质</h3><ul>
+<li><p>这种类型的数据库是<code>最古老</code>的数据库类型，关系型数据库模型是把复杂的数据结构归结为简单的<code>二元关系</code>（即二维表格形式）。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/14/13-36-49-0d253ab00e6b3e51a6855ec5127fb85d-image-20211020145811031-fcc8c9.png"
+                      alt="image-20211020145811031"
+                ></p>
+</li>
+<li><p>关系型数据库以<code>行(row)</code>和<code>列(column)</code>的形式存储数据，以便于用户理解。这一系列的行和列被称为<code>表(table)</code>，一组表组成了一个库(database)。</p>
+</li>
+<li><p>表与表之间的数据记录有关系(relationship)。现实世界中的各种实体以及实体之间的各种联系均用<code>关系模型</code>来表示。关系型数据库，就是建立在<code>关系模型</code>基础上的数据库。</p>
+</li>
+<li><p>SQL 就是关系型数据库的查询语言。</p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-38-08-d6963c30794d8eb3ca01d10ab292e113-image-20211214133808749-b6ca2a.png"
+                      alt="image-20211214133808749"
+                ></p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
+<li><strong>复杂查询</strong><br>可以用SQL语句方便的在一个表以及多个表之间做非常复杂的数据查询。</li>
+<li><strong>事务支持</strong><br>使得对于安全性能很高的数据访问要求得以实现。</li>
+</ul>
+<h1 id="非关系型数据库-非RDBMS"><a href="#非关系型数据库-非RDBMS" class="headerlink" title="非关系型数据库(非RDBMS)"></a>非关系型数据库(非RDBMS)</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>非关系型数据库</strong>，可看成传统关系型数据库的功能<code>阉割版本</code>，基于键值对存储数据，不需要经过SQL层的解析，<code>性能非常高</code>。同时，通过减少不常用的功能，进一步提高性能。</p>
+<p>目前基本上大部分主流的非关系型数据库都是免费的。</p>
+<h3 id="有哪些非关系型数据库"><a href="#有哪些非关系型数据库" class="headerlink" title="有哪些非关系型数据库"></a>有哪些非关系型数据库</h3><p>相比于 SQL，NoSQL 泛指非关系型数据库，包括了榜单上的键值型数据库、文档型数据库、搜索引擎和列存储等，除此以外还包括图形数据库。也只有用 NoSQL 一词才能将这些技术囊括进来。</p>
+<p><strong>键值型数据库</strong></p>
+<p>键值型数据库通过 Key-Value 键值的方式来存储数据，其中 Key 和 Value 可以是简单的对象，也可以是复杂的对象。Key 作为唯一的标识符，优点是查找速度快，在这方面明显优于关系型数据库，缺点是无法像关系型数据库一样使用条件过滤（比如 WHERE），如果你不知道去哪里找数据，就要遍历所有的键，这就会消耗大量的计算。</p>
+<p>键值型数据库典型的使用场景是作为<code>内存缓存</code>。<code>Redis </code>是最流行的键值型数据库。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-38-03-f41bf2e53bc5e155f92223ec963bece3-image-20211214133803852-4e8ddb.png"
+                      alt="image-20211214133803852"
+                ></p>
+<p><strong>文档型数据库</strong></p>
+<p>此类数据库可存放并获取文档，可以是XML、JSON等格式。在数据库中文档作为处理信息的基本单位，一个文档就相当于一条记录。文档数据库所存放的文档，就相当于键值数据库所存放的“值”。MongoDB 是最流行的文档型数据库。此外，还有CouchDB等。</p>
+<p><strong>搜索引擎数据库</strong></p>
+<p>虽然关系型数据库采用了索引提升检索效率，但是针对全文索引效率却较低。搜索引擎数据库是应用在搜索引擎领域的数据存储形式，由于搜索引擎会爬取大量的数据，并以特定的格式进行存储，这样在检索的时候才能保证性能最优。核心原理是“倒排索引”。</p>
+<p>典型产品：Solr、Elasticsearch、Splunk 等。</p>
+<p><strong>列式数据库</strong></p>
+<p>列式数据库是相对于行式存储的数据库，Oracle、MySQL、SQL Server 等数据库都是采用的行式存储（Row-based），而列式数据库是将数据按照列存储到数据库中，这样做的好处是可以大量降低系统的 I&#x2F;O，适合于分布式文件系统，不足在于功能相对有限。典型产品：HBase等。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-37-57-0e309312df23020a0b9a745540bc15df-image-20211214133757670-065d70.png"
+                      alt="image-20211214133757670"
+                ></p>
+<p><strong>图形数据库</strong></p>
+<p>图形数据库，利用了图这种数据结构存储了实体（对象）之间的关系。图形数据库最典型的例子就是社交网络中人与人的关系，数据模型主要是以节点和边（关系）来实现，特点在于能高效地解决复杂的关系问题。</p>
+<p>图形数据库顾名思义，就是一种存储图形关系的数据库。它利用了图这种数据结构存储了实体（对象）之间的关系。关系型数据用于存储明确关系的数据，但对于复杂关系的数据存储却有些力不从心。如社交网络中人物之间的关系，如果用关系型数据库则非常复杂，用图形数据库将非常简单。典型产品：Neo4J、InfoGrid等。</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/14/13-36-50-a27ca228f8d102cd624160398e2207f9-image-20211020180934455-52b299.png"
+                      alt="image-20211020180934455" style="zoom:80%;" 
+                >
+
+<h3 id="NoSQL的演变"><a href="#NoSQL的演变" class="headerlink" title="NoSQL的演变"></a>NoSQL的演变</h3><p>由于 SQL 一直称霸 DBMS，因此许多人在思考是否有一种数据库技术能远离 SQL，于是 NoSQL 诞生了，但是随着发展却发现越来越离不开 SQL。到目前为止 NoSQL 阵营中的 DBMS 都会有实现类似 SQL 的功能。下面是“NoSQL”这个名词在不同时期的诠释，从这些释义的变化中可以看出 <code>NoSQL 功能的演变</code>：</p>
+<p>1970：NoSQL &#x3D; We have no SQL</p>
+<p>1980：NoSQL &#x3D; Know SQL</p>
+<p>2000：NoSQL &#x3D; No SQL!</p>
+<p>2005：NoSQL &#x3D; Not only SQL</p>
+<p>2013：NoSQL &#x3D; No, SQL!</p>
+<p>NoSQL 对 SQL 做出了很好的补充，比如实际开发中，有很多业务需求，其实并不需要完整的关系型数据库功能，非关系型数据库的功能就足够使用了。这种情况下，使用<code>性能更高</code>、<code>成本更低</code>的非关系型数据库当然是更明智的选择。比如：日志收集、排行榜、定时器等。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>NoSQL 的分类很多，即便如此，在 DBMS 排名中，还是 SQL 阵营的比重更大，影响力前 5 的 DBMS 中有 4 个是关系型数据库，而排名前 20 的 DBMS 中也有 12 个是关系型数据库。所以说，掌握 SQL 是非常有必要的。整套课程将围绕 SQL 展开。</p>
+<h1 id="关系型数据库设计规则"><a href="#关系型数据库设计规则" class="headerlink" title="关系型数据库设计规则"></a>关系型数据库设计规则</h1><ul>
+<li><p>关系型数据库的典型数据结构就是<code>数据表</code>，这些数据表的组成都是结构化的（Structured）。</p>
+</li>
+<li><p>将数据放到表中，表再放到库中。</p>
+</li>
+<li><p>一个数据库中可以有多个表，每个表都有一个名字，用来标识自己。表名具有唯一性。</p>
+</li>
+<li><p>表具有一些特性，这些特性定义了数据在表中如何存储，类似Java和Python中 “类”的设计。</p>
+</li>
+</ul>
+<h2 id="表、记录、字段"><a href="#表、记录、字段" class="headerlink" title="表、记录、字段"></a>表、记录、字段</h2><ul>
+<li><p>E-R（entity-relationship，实体-联系）模型中有三个主要概念是：<code>实体集</code>、<code>属性</code>、<code>联系集</code>。</p>
+</li>
+<li><p>一个实体集（class）对应于数据库中的一个表（table），一个实体（instance）则对应于数据库表中的一行（row），也称为一条记录（record）。一个属性（attribute）对应于数据库表中的一列（column），也称为一个字段（field）。</p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-37-50-ca84b7018d5d99b5cbd8dbd6b92c185c-image-20211214133750363-c44ecd.png"
+                      alt="image-20211214133750363"
+                ></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ORM思想 (Object Relational Mapping)体现：</span><br><span class="line">数据库中的一个表  &lt;---&gt; Java或Python中的一个类</span><br><span class="line">表中的一条数据  &lt;---&gt; 类中的一个对象（或实体）</span><br><span class="line">表中的一个列  &lt;----&gt; 类中的一个字段、属性(field)</span><br></pre></td></tr></table></figure>
+
+<h2 id="表的关联关系"><a href="#表的关联关系" class="headerlink" title="表的关联关系"></a>表的关联关系</h2><ul>
+<li><p>表与表之间的数据记录有关系(relationship)。现实世界中的各种实体以及实体之间的各种联系均用关系模型来表示。</p>
+</li>
+<li><p>四种：一对一关联、一对多关联、多对多关联、自我引用</p>
+</li>
+</ul>
+<h3 id="一对一关联（one-to-one）"><a href="#一对一关联（one-to-one）" class="headerlink" title="一对一关联（one-to-one）"></a>一对一关联（one-to-one）</h3><ul>
+<li>在实际的开发中应用不多，因为一对一可以创建成一张表。</li>
+<li>举例：设计<code>学生表</code>：学号、姓名、手机号码、班级、系别、身份证号码、家庭住址、籍贯、紧急联系人、…<ul>
+<li><p>拆为两个表：两个表的记录是一一对应关系。</p>
+</li>
+<li><p><code>基础信息表</code>（常用信息）：学号、姓名、手机号码、班级、系别</p>
+</li>
+<li><p><code>档案信息表</code>（不常用信息）：学号、身份证号码、家庭住址、籍贯、紧急联系人、…</p>
+</li>
+</ul>
+</li>
+<li>两种建表原则： <ul>
+<li>外键唯一：主表的主键和从表的外键（唯一），形成主外键关系，外键唯一。 </li>
+<li>外键是主键：主表的主键和从表的主键，形成主外键关系。</li>
+</ul>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-37-45-9d3fa31944e4ccf16882f12ce938a2df-image-20211214133745582-84f0bf.png"
+                      alt="image-20211214133745582"
+                ></p>
+<h3 id="一对多关系（one-to-many）"><a href="#一对多关系（one-to-many）" class="headerlink" title="一对多关系（one-to-many）"></a>一对多关系（one-to-many）</h3><ul>
+<li>常见实例场景：<code>客户表和订单表</code>，<code>分类表和商品表</code>，<code>部门表和员工表</code>。</li>
+<li>举例：<ul>
+<li><p>员工表：编号、姓名、…、所属部门</p>
+</li>
+<li><p>部门表：编号、名称、简介</p>
+</li>
+</ul>
+</li>
+<li>一对多建表原则：在从表(多方)创建一个字段，字段作为外键指向主表(一方)的主键</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/14/13-36-50-b1acc965cfd7f4a47c874f8b66c23d51-image-20210915001013524-21b84c.png"
+                      alt="image-20210915001013524"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-37-39-4348899fbd4c9b5045621d544b4089e8-image-20211214133739407-c0450e.png"
+                      alt="image-20211214133739407"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/14/13-36-50-b888a2a622c5926bfc945bbc5cd3b6fc-image-20210915084623432-2de29e.png"
+                      alt="image-20210915084623432"
+                ></p>
+<h3 id="多对多（many-to-many）"><a href="#多对多（many-to-many）" class="headerlink" title="多对多（many-to-many）"></a>多对多（many-to-many）</h3><p>要表示多对多关系，必须创建第三个表，该表通常称为<code>联接表</code>，它将多对多关系划分为两个一对多关系。将这两个表的主键都插入到第三个表中。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-37-31-b0b9ca9cab932ee080dae5b7666d0e2c-image-20211214133731854-3b85b9.png"
+                      alt="image-20211214133731854"
+                ></p>
+<ul>
+<li><p><strong>举例1：学生-课程</strong></p>
+<ul>
+<li><p><code>学生信息表</code>：一行代表一个学生的信息（学号、姓名、手机号码、班级、系别…）</p>
+</li>
+<li><p><code>课程信息表</code>：一行代表一个课程的信息（课程编号、授课老师、简介…）</p>
+</li>
+<li><p><code>选课信息表</code>：一个学生可以选多门课，一门课可以被多个学生选择</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">学号     课程编号  </span><br><span class="line">1        1001</span><br><span class="line">2        1001</span><br><span class="line">1        1002</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>举例2：产品-订单</strong></p>
+<p>“订单”表和“产品”表有一种多对多的关系，这种关系是通过与“订单明细”表建立两个一对多关系来定义的。一个订单可以有多个产品，每个产品可以出现在多个订单中。</p>
+<ul>
+<li><code>产品表</code>：“产品”表中的每条记录表示一个产品。</li>
+<li><code>订单表</code>：“订单”表中的每条记录表示一个订单。</li>
+<li><code>订单明细表</code>：每个产品可以与“订单”表中的多条记录对应，即出现在多个订单中。一个订单可以与“产品”表中的多条记录对应，即包含多个产品。</li>
+</ul>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-37-24-e283f604157047c4fa89f9f932756b60-image-20211214133724780-d770fa.png"
+                      alt="image-20211214133724780"
+                ></p>
+<ul>
+<li><strong>举例3：用户-角色</strong></li>
+<li>多对多关系建表原则：需要创建第三张表，中间表中至少两个字段，这两个字段分别作为外键指向各自一方的主键。</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/01_%E8%AF%BE%E4%BB%B6/images/2021/12/14/13-36-51-9804ce5b2b113e2af4935f4a51bc1b76-image-20210915084707586-06603d.png"
+                      alt="image-20210915084707586"
+                ></p>
+<h3 id="自我引用-Self-reference"><a href="#自我引用-Self-reference" class="headerlink" title="自我引用(Self reference)"></a>自我引用(Self reference)</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/zyhwjl/images/raw/master/PicGo/Typora/typora-user-images/2021/12/14/13-37-13-22d5fd9141525848d53952c1106b88e5-image-20211214133713577-5067de.png"
+                      alt="image-20211214133713577"
+                ></p>
+
+            
+        </div>
+        <div class="page-template-comments">
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">ZYHWJL</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+		<div>
+			<span>站点已萌萌哒运行</span>
+			<span id="runtime_span1" style="color:pink"></span>
+			<span>天</span>
+			<span id="runtime_span2" style="color:pink"></span>
+			<span>时</span>
+			<span id="runtime_span3" style="color:pink"></span>
+			<span>分</span>
+			<span id="runtime_span4" style="color:pink"></span>
+			<span>秒</span>
+			 <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new Date("09/8/2020 00:00:00");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span1.innerHTML=A;runtime_span2.innerHTML=B;runtime_span3.innerHTML=C;runtime_span4.innerHTML=D}show_runtime();</script>
+		</div>
+		
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+            <div class="icp-info info-item"><a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn">豫ICP备18042574号</a></div>
+        
+        
+    </div>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?1d63cd421d559da9a90e9b5fc6fc6178";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</footer>
+
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
